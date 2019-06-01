@@ -1,3 +1,11 @@
 <h2 id="title">Welcome to Ember</h2>
-
+<OpenplayerPlayer />
+<hr>
+<ul>
+  {{#each model as |m| }}
+    <li>{{m.title}} {{m.itemid}}
+      <RtePlay @model={{m}} @audioId={{m.itemid}}>Play</RtePlay>
+    </li>
+  {{/each}}
+</ul>
 {{outlet}}

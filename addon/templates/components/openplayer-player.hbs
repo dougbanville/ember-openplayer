@@ -1,0 +1,11 @@
+<h1>Hello</h1>
+<h2>CurrentTime: {{ openplayerPlayer.currentTime}}</h2>
+<audio id="openplayer-player" class="op-player  op-player__media" controls playsinline>
+  <source
+    src="https://cdn.rasset.ie/manifest/audio/2019/0404/20190404_rteradio1-bitesize-theryantub_c21535005_21535006_261_/manifest.m3u8">
+</audio>
+https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8
+
+<button {{action "pause"}}>Pause</button>
+
+<button {{action "changeSource" "https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8"}}>Play Live</button>
