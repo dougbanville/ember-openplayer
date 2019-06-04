@@ -7,9 +7,12 @@ import { task } from "ember-concurrency";
 export default Component.extend({
   layout,
   openplayerPlayer: service(),
+  ajax: service(),
 
   playSync: task(function*() {
-    let url = `https://feeds.rasset.ie/rteavgen/getplaylist/?format=jsonp&id=${this.audioId}&callback=html5player`;
+    let url = `https://feeds.rasset.ie/rteavgen/getplaylist/?format=jsonp&id=${
+      this.audioId
+    }&callback=html5player`;
     let result = yield fetchJsonp(url, {
       jsonpCallbackFunction: "html5player"
     });
@@ -46,10 +49,7 @@ export default Component.extend({
       if (source > 1) {
         source = 0;
       }
-      this.openplayerPlayer.player.src = this.audioId;
-      this.openplayerPlayer.player.play();
-      this.openplayerPlayer.setNowPlaying(model);
-      /*
+
       if (this.audioId < 100) {
         //it's live
         this.send("playLive", model);
@@ -57,18 +57,17 @@ export default Component.extend({
         if (this.isInPlayer) {
           this.emberFlowplayer.player.toggle();
         } else {
-          let url = `https://feeds.rasset.ie/rteavgen/getplaylist/?format=jsonp&id=${
+          let url = `https://feeds.rasset.ie/rteavgen/getplaylist/?id=${
             this.audioId
-          }&callback=html5player`;
-          fetchJsonp(url, {
-            jsonpCallbackFunction: "html5player"
-          })
-            .then(response => {
-              return response.json();
+          }&callback=html5player&format=jsonp`;
+          this.ajax
+            .request(url, {
+              dataType: "jsonp"
             })
             .then(json => {
-              //console.dir(json.shows[0]["media:group"][0]);
-              let hlsUrl = json.shows[0]["media:group"][0].hls_server + json.shows[0]["media:group"][0].hls_url;
+              let hlsUrl =
+                json.shows[0]["media:group"][0].hls_server +
+                json.shows[0]["media:group"][0].hls_url;
               this.set("hlsUrl", hlsUrl);
 
               this.openplayerPlayer.player.src = this.hlsUrl;
@@ -80,7 +79,6 @@ export default Component.extend({
             });
         }
       }
-      */
     },
     playLive(model) {
       let url = `https://feeds.rasset.ie/livelistings/playlist/?source=rte.ie&platform=webradio&channelid=${
