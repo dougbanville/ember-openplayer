@@ -2,13 +2,54 @@ import Component from "@ember/component";
 import layout from "../templates/components/rte-play";
 import fetchJsonp from "fetch-jsonp";
 import { inject as service } from "@ember/service";
+import { task } from "ember-concurrency";
 
 export default Component.extend({
   layout,
   openplayerPlayer: service(),
 
+  playSync: task(function*() {
+    let url = `https://feeds.rasset.ie/rteavgen/getplaylist/?format=jsonp&id=${this.audioId}&callback=html5player`;
+    let result = yield fetchJsonp(url, {
+      jsonpCallbackFunction: "html5player"
+    });
+    this.set("result", result.json());
+    console.log(result.json());
+  }),
+
   actions: {
+    makeAudioandPlay() {
+      let sources = [
+        "https://cdn.rasset.ie/manifest/audio/2019/0404/20190404_rteradio1-bitesize-theryantub_c21535005_21535006_261_/manifest.m3u8",
+        "https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8"
+      ];
+      let source = 0;
+
+      if (this.openplayerPlayer.created) {
+        console.log("tear it down");
+        source = 1;
+        var element = document.getElementById("myAudio");
+        document.getElementById("audio").removeChild(element);
+      }
+      let audio = document.createElement("audio");
+      audio.setAttribute("id", "myAudio");
+      audio.src = sources[source];
+      audio.setAttribute("controls", "controls");
+      document.getElementById("audio").appendChild(audio);
+      this.openplayerPlayer.setCreated(true);
+      audio.play();
+    },
     play(model) {
+      this.playSync.perform();
+      let sources = ["https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8"];
+      let source = 0;
+      if (source > 1) {
+        source = 0;
+      }
+      this.openplayerPlayer.player.src = this.audioId;
+      this.openplayerPlayer.player.play();
+      this.openplayerPlayer.setNowPlaying(model);
+      /*
       if (this.audioId < 100) {
         //it's live
         this.send("playLive", model);
@@ -39,6 +80,7 @@ export default Component.extend({
             });
         }
       }
+      */
     },
     playLive(model) {
       let url = `https://feeds.rasset.ie/livelistings/playlist/?source=rte.ie&platform=webradio&channelid=${

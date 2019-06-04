@@ -1,0 +1,1070 @@
+@import "settings";
+@import "foundation-sites/foundation";
+@include foundation-everything;
+@import "station_settings";
+@import "custom_icons";
+@import "loader";
+@import "ember-flowplayer-range-slider";
+
+//@import 'skin';
+body {
+  background: $black;
+  color: $white;
+  font-family: "Source Sans Pro";
+  button {
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+  }
+}
+.grid-container {
+  overflow-x: hidden; //bit of a hack
+}
+.content {
+  min-height: 330px;
+  overflow: hidden;
+  @include breakpoint(small only) {
+    min-height: 430px;
+  }
+}
+.alphabet {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-transform: capitalize;
+  height: 54px;
+  color: #677890;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 54px;
+  ::-webkit-scrollbar {
+    height: 4px;
+    background-color: #677890;
+    width: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 1px;
+    background-color: #a3b0c6;
+  }
+  h2 {
+    line-height: 54px !important;
+  }
+  a {
+    color: #677890;
+  }
+  .active {
+    color: $white;
+  }
+}
+h2 {
+  color: $white;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 24px;
+}
+.outlet {
+  height: 350px;
+  background-color: #292d32;
+}
+.grid-margin-x {
+  margin: 2px;
+}
+.burger-menu {
+  color: $white !important;
+}
+.default {
+  background-color: #685b51;
+}
+.rte-radioplayer {
+  overflow: hidden;
+  .mute {
+    margin-top: 20px;
+    @include breakpoint(small only) {
+      margin-top: 28px;
+    }
+  }
+  .volume {
+    width: 80%;
+    @include breakpoint(small only) {
+      float: right;
+      margin-top: 35px;
+    }
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  h4 {
+    color: $white;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-top: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 54ch;
+    @include breakpoint(small only) {
+      margin-top: 10px;
+      font-size: 12px;
+      overflow-y: scroll;
+      overflow-x: scroll;
+    }
+  }
+  background-color: #1a1e20;
+  height: 110px;
+  .volume-cell {
+    @include breakpoint(medium) {
+      padding-top: 15px;
+    }
+  }
+  .progress {
+    margin-top: 55px;
+  }
+  @include breakpoint(small only) {
+    height: 72px;
+    margin-bottom: 0;
+    .progress {
+      margin-top: 36px;
+    }
+  }
+  .duration_information {
+    color: #a3b0c6;
+    @include breakpoint(small only) {
+      font-size: 11px;
+      font-family: "Source Sans Pro";
+    }
+  }
+}
+header {
+  .top-playbutton {
+    @include breakpoint(small only) {
+      .button {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+  }
+  .mobile-menu-button {
+    color: $white;
+    position: relative;
+    width: 30px;
+    span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      &:nth-child(1n) {
+        top: 0px;
+      }
+      &:nth-child(2n) {
+        top: 10px;
+      }
+      &:nth-child(3n) {
+        top: 20px;
+      }
+    }
+  }
+  padding-top: 1em;
+  @include breakpoint(320px only) {
+    .grid-margin-x > .cell {
+      margin-left: 0;
+    }
+  }
+  height: 86px;
+  @include breakpoint(small only) {
+    height: 64px;
+    padding-top: 0em;
+  }
+  .icon-RP-Webfont_Stations-Arrow {
+    color: $white !important;
+  }
+  .icon-RP-Webfont_Stations-Arrow:before {
+    color: #ffffff;
+  }
+  .play_button {
+    background-color: $white;
+    border-radius: 50%;
+    padding-left: 3px;
+    height: 24px;
+    width: 24px;
+    float: left;
+    margin-top: 15px;
+    margin-left: 15px;
+  }
+  .logo {
+    margin-top: 10px;
+    height: 40px;
+    width: 210px;
+    @include breakpoint(small only) {
+      width: 100px;
+      background-size: 100px;
+      background-position: left center;
+      height: 64px;
+      margin-top: 0;
+      display: block;
+      margin: 0;
+    }
+  }
+  .default {
+    background-image: $radioLogo;
+    background-repeat: no-repeat;
+    background-size: 150px;
+    @include breakpoint(small only) {
+      background-size: 100px;
+    }
+  }
+  .radio1 {
+    background-image: $radio1Logo;
+    background-repeat: no-repeat;
+  }
+  .twofm {
+    background-color: $twofmColor;
+    background-image: $twofmLogo;
+    background-repeat: no-repeat;
+  }
+  .rnag {
+    background-color: $rnagColor;
+    background-image: $rnagLogo;
+    background-repeat: no-repeat;
+  }
+  .pulse {
+    background-color: $pulseColor;
+    background-image: $pulseLogo;
+    background-repeat: no-repeat;
+  }
+  .radio1extra {
+    background-color: $radio1extraColor;
+    background-image: $radio1extraLogo;
+    background-repeat: no-repeat;
+  }
+  .gold {
+    background-color: $goldColor;
+    background-image: $goldLogo;
+    background-repeat: no-repeat;
+  }
+  .lyric {
+    background-color: $lyricColor;
+    background-image: $lyricLogo;
+    background-repeat: no-repeat;
+  }
+  .twoxm {
+    background-color: $twoxmColor;
+    background-image: $twoxmLogo;
+    background-repeat: no-repeat;
+  }
+  .junior {
+    background-color: $juniorColor;
+    background-image: $juniorLogo;
+    background-repeat: no-repeat;
+    background-size: 60px !important;
+  }
+  .podcasts {
+    background-color: $twoxmColor;
+    background-image: $rteLogo;
+    background-repeat: no-repeat;
+  }
+  .top-icon-button {
+    line-height: 24px !important;
+    font-size: 18px;
+    color: $white;
+    font-family: Montserrat;
+    font-weight: 700;
+    @include breakpoint(small only) {
+      font-size: 14px;
+    }
+  }
+  .top-icon {
+    font-size: 24px;
+    line-height: 24px !important;
+    margin-right: 4px;
+    float: left;
+  }
+}
+.show-time {
+  height: 12px;
+  font-size: 12px;
+  color: #677890;
+  font-family: "Source Sans Pro";
+  line-height: 1;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.programme {
+  padding-right: 0.925rem;
+  padding-left: 0.925rem;
+
+  .icon-RP-Webfont_Listen-Back:before {
+    font-size: 1.3rem;
+  }
+  .icon-RP-Webfont_Website:before {
+    font-size: 1.3rem;
+  }
+  .icon-RP-Webfont_Download:before {
+    font-size: 1.3rem;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    font-size: 1.3rem;
+  }
+  background-color: #292d32;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .show-info-cell {
+    border-bottom: 1px solid #677890;
+  }
+  .overlay {
+    height: 500px;
+    width: 100%;
+    position: absolute;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+  }
+
+  .button {
+    margin-bottom: 0;
+    @include breakpoint(small only) {
+      padding: 1em 1em 1em 0em;
+      font-size: 14px;
+    }
+    padding: 1em 1em 1em 0em;
+  }
+  .title {
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+  }
+  .show-description {
+    @include breakpoint(medium) {
+      //height: 155px;
+    }
+    @include breakpoint(small only) {
+      padding-bottom: 2em;
+      margin-bottom: 0;
+    }
+    color: #ffffff;
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .show-image {
+    border: 1px solid $white;
+    display: block;
+    @include breakpoint(medium) {
+      float: right;
+      //width:97%;
+      //max-height: 194px;;
+    }
+    @include breakpoint(small only) {
+      margin-bottom: 10px;
+    }
+  }
+}
+.transparent {
+  background-color: transparent !important;
+  color: #ffffff;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: bold;
+}
+.playButton {
+  padding: 0.85em 0 !important;
+}
+.progPlayButton {
+  cursor: pointer;
+  background-color: #ffffff !important;
+  font-family: Montserrat;
+  font-size: 16px !important;
+  font-weight: bold;
+  border-radius: 20.5px;
+  padding: 5px 25px 5px 10px;
+  margin-top: 14px;
+  display: flex !important;
+  align-items: center;
+  i {
+    font-size: 2rem;
+    float: left;
+  }
+}
+.circular_button {
+  background-color: $white !important;
+  color: #ffffff;
+  font-family: Montserrat;
+  border-radius: 50%;
+  padding: 0 0 0 0 !important;
+}
+
+.stations_dropdowns {
+  .dd-columns {
+    margin-top: 5px;
+    margin-right: 5px;
+    display: flex !important;
+    align-items: center;
+    padding-left: 1em;
+    @include breakpoint(small only) {
+      margin: 5px 5px 0 0;
+    }
+  }
+  .no-right-margin-medium {
+    @include breakpoint(medium) {
+      margin-right: 0 !important;
+    }
+  }
+  .no-right-margin-small {
+    @include breakpoint(small only) {
+      margin-right: 0 !important;
+    }
+  }
+  cursor: pointer;
+  .grid-margin-x > .cell {
+    @include breakpoint(small only) {
+      margin-left: 0;
+    }
+  }
+  .grid-margin-x {
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+    margin-left: 0.4em;
+    @include breakpoint(small only) {
+      margin-left: 0;
+    }
+    margin-right: 0.4em;
+  }
+  .default {
+    background-image: $radioLogo;
+    background-repeat: no-repeat;
+  }
+  .radio1 {
+    background-color: $radio1Color;
+    background-image: $radio1Logo;
+  }
+  .twofm {
+    background-color: $twofmColor;
+    background-image: $twofmLogo;
+  }
+  .rnag {
+    background-color: $rnagColor;
+    background-image: $rnagLogo;
+  }
+  .pulse {
+    background-color: $pulseColor;
+    background-image: $pulseLogo;
+  }
+  .radio1extra {
+    background-color: $radio1extraColor;
+    background-image: $radio1extraLogo;
+  }
+  .gold {
+    background-color: $goldColor;
+    background-image: $goldLogo;
+  }
+  .lyric {
+    background-color: $lyricColor;
+    background-image: $lyricLogo;
+  }
+  .twoxm {
+    background-color: $twoxmColor;
+    background-image: $twoxmLogo;
+  }
+  .junior {
+    background-color: $juniorColor;
+    background-image: $juniorLogo;
+    @include breakpoint(small only) {
+      background-size: 50px !important;
+    }
+  }
+  .stationLogo {
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 66px !important;
+    display: block;
+    @include breakpoint(small only) {
+      height: 40px !important;
+      background-size: 80px;
+    }
+  }
+  ul {
+    li {
+      height: 40px;
+      color: #ffffff;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 40px;
+      border-bottom: 1px solid #677890;
+    }
+  }
+}
+
+.rotate {
+  display: inline-block;
+  -moz-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.rotateBack {
+  display: inline-block;
+  -moz-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.mobile-search {
+  padding: 20px 0px 20px 0px;
+  height: 90px !important;
+}
+.search-form {
+  height: 41px;
+  width: 222px;
+  border-radius: 20.5px;
+  background-color: #ffffff;
+  position: relative;
+  @include breakpoint(medium) {
+    float: right;
+  }
+  @include breakpoint(small only) {
+    align-content: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+  button {
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+  }
+  input {
+    float: left;
+    width: 80%;
+    background: transparent;
+    border: none;
+    padding-left: 20px;
+    border-radius: 20.5px;
+    border: none !important;
+    box-shadow: none !important;
+    font-family: "Source Sans Pro", sans-serif;
+    :focus {
+      background-color: transparent;
+      border: none !important;
+      padding-left: 20px;
+      border-radius: 20.5px;
+    }
+  }
+  .search-button {
+    background-color: #677890 !important;
+    height: 41px;
+    width: 41px;
+    background-color: #677890;
+    border-radius: 20.5px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    &:hover {
+      background-color: #9cafca !important;
+    }
+  }
+}
+#gpt-leaderboard {
+  display: block;
+  background-color: #677890;
+  height: 90px;
+  width: 100%;
+  margin: a auto;
+  overflow: hidden;
+}
+
+.bottom-nav {
+  margin-top: 1em;
+}
+.ad {
+  background-color: #292d32;
+  width: 100%;
+  .container {
+    background-color: #677890;
+    width: 100%;
+  }
+}
+.list-items-container {
+  background-color: #292d32;
+  padding-top: 10px;
+  max-height: 246px;
+}
+.listing {
+  .grid-container {
+    padding-left: 0;
+  }
+  .mobile_list_button {
+    @include breakpoint(small only) {
+      display: flex !important;
+      float: left !important;
+      align-self: flex-end !important;
+      margin-bottom: 0;
+    }
+  }
+  background-color: $black;
+  background-color: #292d32;
+  padding-top: 10px;
+  min-height: 246px;
+  overflow-y: auto;
+
+  /* width */
+  .line {
+    margin-top: 10px;
+    height: 1px;
+    background-color: #677890;
+    margin-bottom: 1em;
+  }
+
+  @include breakpoint(small only) {
+    max-height: 350px;
+    margin-bottom: 10px;
+  }
+  .faq {
+    max-height: 290px;
+    overflow-y: scroll;
+    background-color: #292d32;
+    .plus {
+      width: 5%;
+      @include breakpoint(small only) {
+        width: 10%;
+      }
+      float: left;
+    }
+    .qa {
+      width: 95%;
+      @include breakpoint(small only) {
+        width: 90%;
+      }
+      float: left;
+    }
+    .detail {
+      padding: 10px;
+      border-bottom: 1px solid #677890;
+      min-height: 50px;
+      @include breakpoint(small only) {
+        min-height: 80px;
+      }
+    }
+    h2 {
+      color: $white;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 19px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .list {
+    .margin-right {
+      margin-right: 20px;
+    }
+    button {
+      padding: 5px;
+    }
+    last-child > button {
+      display: none;
+    }
+    .list-container {
+      border-left: 4px solid $white;
+    }
+    .button-tools {
+      @include breakpoint(small only) {
+        margin-top: 15px;
+        i {
+          font-size: 30px;
+        }
+      }
+    }
+    .listing-link {
+      cursor: pointer;
+      line-height: 1;
+      .show-time {
+        color: #677890;
+        text-transform: uppercase;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+    .innerDiv {
+      border-bottom: 1px solid white;
+      margin: 0 auto;
+      padding: 10px;
+    }
+    .listLine {
+      border-left: 4px solid $white;
+      padding: 10px;
+      width: 75%;
+      float: left;
+    }
+    @include breakpoint(small only) {
+      max-height: 380px;
+    }
+
+    .button {
+      padding: 0.8em 0;
+    }
+    margin-bottom: 20px;
+
+    h2 {
+      color: $white;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 19px;
+      a &:hover {
+        text-decoration: underline;
+      }
+    }
+    p {
+      color: #ffffff;
+      font-family: "Source Sans Pro";
+      font-size: 14px;
+      line-height: 18px;
+      width: 80%;
+      float: left;
+    }
+    i {
+      font-size: 40px;
+      @include breakpoint(small only) {
+        font-size: 24px;
+      }
+    }
+    ul {
+      list-style-type: none;
+      margin-left: 0;
+      li {
+        border-bottom: 1px solid #677890;
+        padding: 1em;
+        min-height: 90px;
+      }
+    }
+  }
+}
+#play,
+#pause {
+  .button {
+    @include breakpoint(small only) {
+      padding: 0.85em 0 !important;
+    }
+  }
+  .icon-RP-Webfont_Play-Outline:before {
+    @include breakpoint(small only) {
+      font-size: 50px;
+    }
+    font-size: 80px;
+    color: #4ca1d2;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    padding: -50px;
+  }
+  .icon-RP-Webfont_Play:before {
+    @include breakpoint(small only) {
+      font-size: 50px;
+    }
+    font-size: 80px;
+    color: #4ca1d2;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    padding: -50px;
+  }
+  .icon-RP-Webfont_Pause:before {
+    @include breakpoint(small only) {
+      font-size: 50px;
+    }
+    font-size: 80px;
+    color: #4ca1d2;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    padding: -50px;
+  }
+}
+.icon-RP-Webfont_Volume {
+  font-size: 40px;
+  @include breakpoint(small only) {
+    font-size: 25px;
+  }
+}
+.progress {
+  background-color: $white;
+  height: 4px;
+}
+#fp-audio {
+  .fp-header {
+    display: none;
+  }
+  .fp-hidden {
+    display: none;
+  }
+  .fp-progress {
+    background-color: green;
+  }
+  .fp-bar {
+    background-color: $white;
+    height: 4px;
+  }
+}
+
+#fp-audio .fp-timestamp {
+  display: none;
+}
+#fp-audio .fp-color {
+  background-color: #f00;
+}
+#fp-audio .fp-controls {
+  background-color: transparent !important;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+}
+//audio progress bar
+.progress-container {
+  @include breakpoint(small only) {
+    padding-top: 20px;
+  }
+  padding-top: 35px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type="range"]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+/* Special styling for WebKit/Blink */
+//thumb
+/* Special styling for WebKit/Blink */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -5px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+/* All the same stuff for Firefox */
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+}
+
+/* All the same stuff for IE */
+input[type="range"]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+//track
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background-color: transparent !important;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+#fp-audio .fp-timestamp {
+  display: none;
+}
+#fp-audio .fp-color {
+  background-color: #f00;
+}
+#fp-audio .fp-controls {
+  background-color: #600;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(120, 0, 0, 0.85)),
+    to(rgba(120, 0, 0, 0.85))
+  );
+  background-image: -webkit-linear-gradient(top, rgba(220, 0, 0, 0.85), rgba(120, 0, 0, 0.85));
+  background-image: linear-gradient(to bottom, rgba(220, 0, 0, 0.85), rgba(120, 0, 0, 0.85));
+}
+.reveal {
+  background-color: $black;
+}
+.screenreader {
+  position: absolute !important; /* Outside the DOM flow */
+  height: 1px;
+  width: 1px; /* Nearly collapsed */
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE 7+ only support clip without commas */
+  clip: rect(1px, 1px, 1px, 1px); /* All other browsers */
+}
+//calendar
+h3 {
+  font-family: Montserrat;
+  font-weight: bold;
+}
+.logo-container {
+  float: left;
+  width: 25%;
+}
+.nav-container {
+  float: right;
+}
+.no-padding {
+  padding-right: 0 !important;
+  @include breakpoint(small only) {
+    padding-left: 0;
+  }
+}
+.text-left {
+  text-align: left;
+  display: flex !important;
+  align-items: center;
+  i {
+    margin-right: 5px;
+  }
+}
+.darker {
+  background-color: #1a1e20;
+}
+
+.float-right-mobile {
+  @include breakpoint(small only) {
+    float: right;
+  }
+}
+.mobile_nav_top {
+  border-bottom: 0 !important;
+}
+.mobile-stations-dd {
+  .grid-margin-x {
+    margin-left: 0 !important;
+  }
+  padding: 0 !important;
+}
+.relative {
+  position: relative;
+}
+.cancelContainer {
+  position: absolute;
+  @include breakpoint(small only) {
+    position: fixed;
+  }
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  max-height: 54px;
+}
+.bottom_buttons {
+  text-align: left;
+  padding: 0.85em 0;
+}
+.holding {
+  .padded-right {
+    margin-right: 0.925rem;
+  }
+  .full-for-mob {
+    @include breakpoint(small only) {
+      margin-right: 0;
+    }
+  }
+}
+.prog-borders {
+  border-bottom: 1px solid #677890;
+  height: 100%;
+}
+.scrollContiner {
+  white-space: nowrap;
+  height: 270px;
+  border: 1px solid white;
+  //overflow-y: scroll;
+  ::-webkit-scrollbar {
+    height: 4px !important;
+    background-color: #677890 important;
+    width: 40pximportant;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 1px important;
+  }
+}
+h2,
+.hoverUl {
+  &:hover {
+    text-decoration: underline;
+  }
+}

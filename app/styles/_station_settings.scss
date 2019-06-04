@@ -1,0 +1,277 @@
+$twofmColor: #f15a29 !important;
+$twofmLogo: url(logos/RP-Logo_2FM-Crop.svg);
+$radio1Color: #57a9d3 !important;
+$radio1Logo: url(logos/RP-Logo_Radio1-Crop.svg);
+$radioLogo: url(logos/RP-Logo_Radio-Crop.svg);
+$rteLogo: url(logos/rte-logo.svg);
+$lyricColor: #582e91 !important;
+$lyricLogo: url(logos/RP-Logo_LyricFM-Crop.svg);
+$rnagColor: #5a913a !important;
+$rnagLogo: url(logos/RP-Logo_RnaG-Crop.svg);
+$pulseColor: #cf2a27 !important;
+$pulseLogo: url(logos/RP-Logo_Pulse-Crop.svg);
+$twoxmColor: #0f0f0f !important;
+$twoxmLogo: url(logos/RP-Logo_2XM-Crop.svg);
+$juniorColor: #83b81a !important;
+$juniorLogo: url(logos/RP-Logo_Jr-Radio-Crop.svg);
+$goldColor: #9e6f20 !important;
+$goldLogo: url(logos/RP-Logo_Gold-Crop.svg);
+$radio1extraColor: #0d2d6e !important;
+$radio1extraLogo: url(logos/RP-Logo_Radio1-Extra-Crop.svg);
+$podcastColor: #ff0135;
+
+.radio1 {
+  background-color: $radio1Color;
+  &.progPlayButton {
+    color: $radio1Color;
+  }
+  input[type="range"] {
+    display: none !important;
+  }
+
+  .fp-icon {
+    color: $radio1Color;
+  }
+  i {
+    color: $radio1Color;
+  }
+  .icon-RP-Webfont_Play-Outline:before {
+    color: $radio1Color;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $radio1Color;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: $radio1Color;
+  }
+
+  .icon-RP-Webfont_Volume:before {
+    color: $radio1Color;
+    font-size: 40px;
+    @include breakpoint(small only) {
+      font-size: 25px;
+    }
+  }
+}
+.twofm {
+  background-color: $twofmColor;
+  &.progPlayButton {
+    color: $twofmColor;
+  }
+  i {
+    color: $twofmColor;
+  }
+  .icon-RP-Webfont_Play-Outline:before {
+    color: $twofmColor;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: $twofmColor;
+  }
+  .icon-RP-Webfont_Volume:before {
+    color: $twofmColor;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $twofmColor;
+  }
+  .icon-RP-Webfont_Download:before {
+    color: $twofmColor;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    color: $twofmColor;
+  }
+}
+.rnag {
+  background-color: $rnagColor;
+  &.progPlayButton {
+    color: $rnagColor;
+  }
+  .icon-RP-Webfont_Play-Outline:before {
+    color: $rnagColor;
+  }
+  .icon-RP-Webfont_Volume:before {
+    color: $rnagColor;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $rnagColor;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: $rnagColor;
+  }
+  .icon-RP-Webfont_Download:before {
+    color: $rnagColor;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    color: $rnagColor;
+  }
+}
+.pulse {
+  &.progPlayButton {
+    color: $pulseColor;
+  }
+  background-color: $pulseColor;
+  .icon-RP-Webfont_Play-Outline:before {
+    color: $pulseColor;
+  }
+  .icon-RP-Webfont_Volume:before {
+    color: $pulseColor;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $pulseColor;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: $pulseColor;
+  }
+  .icon-RP-Webfont_Download:before {
+    color: $pulseColor;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    color: $pulseColor;
+  }
+}
+.radio1extra {
+  &.progPlayButton {
+    color: $radio1extraColor;
+  }
+  background-color: $radio1extraColor;
+  .icon-RP-Webfont_Play-Outline:before {
+    color: $radio1extraColor;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: $radio1extraColor;
+  }
+  .icon-RP-Webfont_Volume:before {
+    color: $radio1extraColor;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $radio1extraColor;
+  }
+  .icon-RP-Webfont_Download:before {
+    color: $radio1extraColor;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    color: $radio1extraColor;
+  }
+}
+.gold {
+  &.progPlayButton {
+    color: $goldColor;
+  }
+  background-color: $goldColor;
+  .icon-RP-Webfont_Play-Outline:before {
+    color: $goldColor;
+  }
+  .icon-RP-Webfont_Volume:before {
+    color: $goldColor;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $goldColor;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: $goldColor;
+  }
+  .icon-RP-Webfont_Download:before {
+    color: $goldColor;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    color: $goldColor;
+  }
+}
+.lyric {
+  &.progPlayButton {
+    color: $lyricColor;
+  }
+  background-color: $lyricColor;
+  .icon-RP-Webfont_Play-Outline:before {
+    color: $lyricColor;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: $lyricColor;
+  }
+  .icon-RP-Webfont_Volume:before {
+    color: $lyricColor;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $lyricColor;
+  }
+  .icon-RP-Webfont_Download:before {
+    color: $lyricColor;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    color: $lyricColor;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $lyricColor;
+  }
+}
+.twoxm {
+  &.progPlayButton {
+    color: #677890;
+  }
+  background-color: $twoxmColor;
+  .icon-RP-Webfont_Play-Outline:before {
+    color: #677890;
+  }
+  .icon-RP-Webfont_Volume:before {
+    color: #677890 !important;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: #677890 !important;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: #677890 !important;
+  }
+  .icon-RP-Webfont_Download:before {
+    color: #677890 !important;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    color: #677890 !important;
+  }
+}
+.junior {
+  &.progPlayButton {
+    color: $juniorColor;
+  }
+  background-color: $juniorColor;
+  .icon-RP-Webfont_Play-Outline:before {
+    color: $juniorColor;
+  }
+  .icon-RP-Webfont_Volume:before {
+    color: $juniorColor;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $juniorColor;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: $juniorColor;
+  }
+  .icon-RP-Webfont_Download:before {
+    color: $juniorColor;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    color: $juniorColor;
+  }
+}
+.podcasts {
+  &.progPlayButton {
+    color: $podcastColor;
+  }
+  background-color: $twoxmColor;
+  .icon-RP-Webfont_Play-Outline:before {
+    color: $podcastColor !important;
+  }
+  .icon-RP-Webfont_Volume:before {
+    color: $podcastColor !important;
+  }
+  .icon-RP-Webfont_Play:before {
+    color: $podcastColor !important;
+  }
+  .icon-RP-Webfont_Pause:before {
+    color: $podcastColor !important;
+  }
+  .icon-RP-Webfont_Download:before {
+    color: $podcastColor !important;
+  }
+  .icon-RP-Webfont_Share-Solid:before {
+    color: $podcastColor !important;
+  }
+}
