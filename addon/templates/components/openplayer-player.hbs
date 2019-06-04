@@ -9,3 +9,113 @@ https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8
 <button {{action "pause"}}>Pause</button>
 
 <button {{action "changeSource" "https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8"}}>Play Live</button>
+
+<style>
+  .fp-player {
+    display: none;
+  }
+
+  .fp-ui {
+    display: none;
+  }
+</style>
+{{#if error}}
+  <div
+    style="height:100px; position:absolute; z-index:100; background:rgba(0,0,0,0.4); width:100%; display:flex; align-items:center;">
+    <div class="grid-container">
+      <div class="grid-x">
+        <button class="button">{{errorMessage}} Reload</button>
+      </div>
+    </div>
+  </div>
+{{/if}}
+<div class="grid-container rte-radioplayer">
+  <audio-player aria-label="Audio Player" id="ember89" class="ember-view">
+    <div class="rte-radioplayer">
+      <div class="grid-x">
+        <div class="small-3 medium-2 cell">
+          {{#if openplayerPlayer.isPlaying}}
+            <button tabindex="1" id="pause" {{action "pause"}}
+              class="button transparent playButton {{ openplayerPlayer.nowPlaying.stationClass}}" label="Pause">
+              <i class="icon-RP-Webfont_Pause"></i>
+            </button>
+          {{else}}
+            <button tabindex="1" id="play" {{action "play"}}
+              class="button transparent playButton {{openplayerPlayer.nowPlaying.stationClass}}" label="Play">
+              <i class="icon-RP-Webfont_Play"></i>
+            </button>
+          {{/if}}
+        </div>
+        <div class="small-7 medium-8 cell">
+          {{#if openplayerPlayer.isLive}}
+
+            {{#if openplayerPlayer.nowPlaying }}
+              <h4 class="hoverUl">
+                {{{openplayerPlayer.nowPlaying.title}}}</h4>
+            {{else}}
+              <h4 class="hoverUl">{{ yield }}</h4>
+            {{/if}}
+
+          {{else}}
+
+            {{#if openplayerPlayer.nowPlaying }}
+              <h4 class="hoverUl">
+                {{{openplayerPlayer.nowPlaying.title}}}</h4>
+            {{else}}
+              <h4 class="hoverUl">{{ yield }}</h4>
+            {{/if}}
+
+          {{/if}}
+
+          {{#if openplayerPlayer.changeSrc}}
+            Loading
+          {{else}}
+            {{#if openplayerPlayer.isLive}}
+              <!-- <openplayerPlayerLiveRange /> -->
+            {{else}}
+              {{#if openplayerPlayer.duration }}
+                <OpenplayerRange @max={{openplayerPlayer.duration }} @min=0 @value={{ openplayerPlayer.currentTime }}
+                  @live={{openplayerPlayer.isLive}} />
+              {{/if}}
+
+            {{/if}}
+          {{/if}}
+
+
+
+          <div class="duration_information">
+            <!-- <openplayerPlayerTime @duration={{openplayerPlayer.currentTime}} /> -->
+            {{#if openplayerPlayer.isLive}}
+              <!-- <openplayerPlayerTime @duration={{ openplayerPlayer.nowPlaying.duration }} class="float-right" /> -->
+              {{timeLeft}} Started {{openplayerPlayer.liveProgrammeTimeLeft}} ago
+            {{else}}
+              <!--  <openplayerPlayerTime @duration={{openplayerPlayer.duration}} class="float-right" /> -->
+            {{/if}}
+          </div>
+
+        </div>
+        <div class="small-2 medium-1  cell volume-cell">
+          <button class="mute float-right transparent">
+            <i class="icon-RP-Webfont_Volume"></i>
+          </button>
+        </div>
+        <div class="medium-1 hide-for-small-only cell">
+          <div class="volume">
+            {{#if openplayerPlayer.changeSrc}}
+
+            {{else}}
+              {{#if openplayerPlayer.duration }}
+                <!-- <openplayerPlayerVolumerange @value=1 /> -->
+              {{/if}}
+            {{/if}}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </audio-player>
+</div>
+<div style="height:0px;">
+  <div id="ember-flowplayer"></div>
+</div>

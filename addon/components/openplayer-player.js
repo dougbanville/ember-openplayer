@@ -15,22 +15,39 @@ export default Component.extend({
 
     this.openplayerPlayer.setPlayer(player);
 
-    this.openplayerPlayer.player.getElement().addEventListener("play", function() {
-      console.log("ready");
+    this.openplayerPlayer.player
+      .getElement()
+      .addEventListener("canplay", player => {
+        this.openplayerPlayer.setDuration(player.srcElement.duration);
+      });
+
+    this.openplayerPlayer.player.getElement().addEventListener("play", () => {
+      this.openplayerPlayer.setPlaying(true);
     });
 
-    this.openplayerPlayer.player.getElement().addEventListener("timeupdate", player => {
-      this.openplayerPlayer.setTime(player.srcElement.currentTime);
+    this.openplayerPlayer.player.getElement().addEventListener("pause", () => {
+      this.openplayerPlayer.setPlaying(false);
     });
 
-    this.openplayerPlayer.player.getElement().addEventListener("ended", function() {
-      console.log("Your code when media ends playing");
-    });
+    this.openplayerPlayer.player
+      .getElement()
+      .addEventListener("timeupdate", player => {
+        this.openplayerPlayer.setTime(player.srcElement.currentTime);
+      });
+
+    this.openplayerPlayer.player
+      .getElement()
+      .addEventListener("ended", function() {
+        console.log("Your code when media ends playing");
+      });
   },
 
   actions: {
     setTime(time) {
       console.log(time);
+    },
+    play() {
+      this.openplayerPlayer.player.play();
     },
     pause() {
       this.openplayerPlayer.player.pause();
