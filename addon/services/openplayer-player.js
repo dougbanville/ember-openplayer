@@ -23,5 +23,8 @@ export default Service.extend({
   },
   setDuration(duration) {
     this.set("duration", duration);
+  },
+  setSliderState(sliding) {
+    this.set("sliding", sliding);
   }
 });

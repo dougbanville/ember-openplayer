@@ -36,21 +36,14 @@ export default Component.extend({
       .getElementsByClassName("noUi-connect")[0]
       .classList.add(this.nowPlayingClass);*/
 
-    this.openplayerPlayer.player
-      .getElement()
-      .addEventListener("timeupdate", player => {
-        if (!this.sliding) {
-          this.openplayerPlayer.setTime(player.srcElement.currentTime);
-        }
-      });
-
-    rangeSlider.noUiSlider.on("update", () => {
-      console.log("slide");
-      //this.set("sliding", true);
+    this.openplayerPlayer.player.getElement().addEventListener("timeupdate", player => {
+      console.log(this.sliding);
+      if (!this.sliding) {
+        if (player.srcElement.currentTime) rangeSlider.noUiSlider.set(player.srcElement.currentTime);
+      }
     });
 
     rangeSlider.noUiSlider.on("slide", () => {
-      console.log("slide");
       this.set("sliding", true);
     });
     rangeSlider.noUiSlider.on("end", values => {
@@ -59,21 +52,19 @@ export default Component.extend({
     });
     rangeSlider.noUiSlider.on("change", values => {
       //this.openplayerPlayer.player.seek(values);
-      console.log("slide");
       this.set("sliding", false);
     });
   },
 
   actions: {
     sliderEvent(event) {
-      console.log(event);
       if (!this.openplayerPlayer.sliding) {
         this.openplayerPlayer.setSliderState(true);
       }
       this.set("value", event.target.value);
     },
     select(event) {
-      this.openplayerPlayer.player.seek(event.target.value);
+      //this.openplayerPlayer.player.seek(event.target.value);
       this.openplayerPlayer.setSliderState(false);
     }
   }
