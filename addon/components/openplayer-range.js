@@ -36,13 +36,6 @@ export default Component.extend({
       .getElementsByClassName("noUi-connect")[0]
       .classList.add(this.nowPlayingClass);*/
 
-    this.openplayerPlayer.player.getElement().addEventListener("timeupdate", player => {
-      console.log(this.sliding);
-      if (!this.sliding) {
-        if (player.srcElement.currentTime) rangeSlider.noUiSlider.set(player.srcElement.currentTime);
-      }
-    });
-
     rangeSlider.noUiSlider.on("slide", () => {
       this.set("sliding", true);
     });
@@ -54,6 +47,12 @@ export default Component.extend({
       //this.openplayerPlayer.player.seek(values);
       this.set("sliding", false);
     });
+  },
+
+  didUpdateAttrs() {
+    var rangeSlider = document.getElementById("ember-openplayer-range");
+    rangeSlider.noUiSlider.set(this.openplayerPlayer.currentTime);
+    rangeSlider.noUiSlider.set("range.max", "100");
   },
 
   actions: {

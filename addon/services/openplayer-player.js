@@ -26,5 +26,8 @@ export default Service.extend({
   },
   setSliderState(sliding) {
     this.set("sliding", sliding);
+  },
+  setChangeSrc(change) {
+    this.set("changeSrc", change);
   }
 });

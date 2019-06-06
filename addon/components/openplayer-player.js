@@ -15,10 +15,28 @@ export default Component.extend({
 
     this.openplayerPlayer.setPlayer(player);
 
+    var progress = document.getElementById("progress");
+
+    /*
     this.openplayerPlayer.player
       .getElement()
-      .addEventListener("canplay", player => {
+      .addEventListener("durationchange", player => {
+        console.log(player.srcElement.duration);
+        this.openplayerPlayer.setChangeSrc(true);
         this.openplayerPlayer.setDuration(player.srcElement.duration);
+
+        setTimeout(() => {
+          this.openplayerPlayer.setChangeSrc(false);
+        }, 100),
+          console.log(`Duration set to ${this.openplayerPlayer.duration}`);
+      });
+    */
+
+    this.openplayerPlayer.player
+      .getElement()
+      .addEventListener("loadedmetadata", player => {
+        console.log(player.srcElement.duration);
+        progress.setAttribute("max", player.srcElement.duration);
       });
 
     this.openplayerPlayer.player.getElement().addEventListener("play", () => {
@@ -33,6 +51,13 @@ export default Component.extend({
       .getElement()
       .addEventListener("timeupdate", player => {
         this.openplayerPlayer.setTime(player.srcElement.currentTime);
+        if (!progress.getAttribute("max"))
+          progress.setAttribute("max", player.srcElement.duration);
+        progress.value = player.srcElement.currentTime;
+        progressBar.style.width =
+          Math.floor(
+            (player.srcElement.currentTime / player.srcElement.duration) * 100
+          ) + "%";
       });
 
     this.openplayerPlayer.player
