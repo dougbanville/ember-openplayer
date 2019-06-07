@@ -73,11 +73,6 @@ https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8
             {{#if openplayerPlayer.isLive}}
               <!-- <openplayerPlayerLiveRange /> -->
             {{else}}
-              {{#if openplayerPlayer.duration }}
-                <OpenplayerRange @max={{openplayerPlayer.duration }} @min=0 @value={{ openplayerPlayer.currentTime }}
-                  @live={{openplayerPlayer.isLive}} />
-              {{/if}}
-
             {{/if}}
           {{/if}}
 

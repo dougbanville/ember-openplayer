@@ -960,16 +960,8 @@ input[type="range"]:focus::-ms-fill-upper {
     from(rgba(120, 0, 0, 0.85)),
     to(rgba(120, 0, 0, 0.85))
   );
-  background-image: -webkit-linear-gradient(
-    top,
-    rgba(220, 0, 0, 0.85),
-    rgba(120, 0, 0, 0.85)
-  );
-  background-image: linear-gradient(
-    to bottom,
-    rgba(220, 0, 0, 0.85),
-    rgba(120, 0, 0, 0.85)
-  );
+  background-image: -webkit-linear-gradient(top, rgba(220, 0, 0, 0.85), rgba(120, 0, 0, 0.85));
+  background-image: linear-gradient(to bottom, rgba(220, 0, 0, 0.85), rgba(120, 0, 0, 0.85));
 }
 .reveal {
   background-color: $black;
@@ -1084,4 +1076,5 @@ button {
 progress {
   vertical-align: baseline;
   background: pink;
+  width: 100%;
 }

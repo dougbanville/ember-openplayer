@@ -15,29 +15,20 @@ export default Component.extend({
 
     this.openplayerPlayer.setPlayer(player);
 
-    var progress = document.getElementById("progress");
+    this.progress = document.getElementById("progress");
+    this.progressBar = document.getElementById("progress-bar");
 
-    /*
-    this.openplayerPlayer.player
-      .getElement()
-      .addEventListener("durationchange", player => {
-        console.log(player.srcElement.duration);
-        this.openplayerPlayer.setChangeSrc(true);
-        this.openplayerPlayer.setDuration(player.srcElement.duration);
+    this.progress.addEventListener("click", e => {
+      var pos = (e.pageX - this.progress.offsetLeft) / this.progress.offsetWidth;
+      var htmlPlayer = this.openplayerPlayer.player.getElement();
+      htmlPlayer.currentTime = pos * htmlPlayer.duration;
+    });
 
-        setTimeout(() => {
-          this.openplayerPlayer.setChangeSrc(false);
-        }, 100),
-          console.log(`Duration set to ${this.openplayerPlayer.duration}`);
-      });
-    */
-
-    this.openplayerPlayer.player
-      .getElement()
-      .addEventListener("loadedmetadata", player => {
-        console.log(player.srcElement.duration);
-        progress.setAttribute("max", player.srcElement.duration);
-      });
+    this.openplayerPlayer.player.getElement().addEventListener("loadedmetadata", player => {
+      //set intial duration but this not reliable on some devices
+      this.progress.setAttribute("max", player.srcElement.duration);
+      this.openplayerPlayer.setDuration(player.srcElement.duration);
+    });
 
     this.openplayerPlayer.player.getElement().addEventListener("play", () => {
       this.openplayerPlayer.setPlaying(true);
@@ -47,24 +38,19 @@ export default Component.extend({
       this.openplayerPlayer.setPlaying(false);
     });
 
-    this.openplayerPlayer.player
-      .getElement()
-      .addEventListener("timeupdate", player => {
-        this.openplayerPlayer.setTime(player.srcElement.currentTime);
-        if (!progress.getAttribute("max"))
-          progress.setAttribute("max", player.srcElement.duration);
-        progress.value = player.srcElement.currentTime;
-        progressBar.style.width =
-          Math.floor(
-            (player.srcElement.currentTime / player.srcElement.duration) * 100
-          ) + "%";
-      });
+    this.openplayerPlayer.player.getElement().addEventListener("timeupdate", player => {
+      this.openplayerPlayer.setTime(player.srcElement.currentTime);
+      this.progress.setAttribute("max", player.srcElement.duration);
+      this.openplayerPlayer.setDuration(player.srcElement.duration);
 
-    this.openplayerPlayer.player
-      .getElement()
-      .addEventListener("ended", function() {
-        console.log("Your code when media ends playing");
-      });
+      this.progress.value = player.srcElement.currentTime;
+      this.progressBar.style.width =
+        Math.floor((player.srcElement.currentTime / player.srcElement.duration) * 100) + "%";
+    });
+
+    this.openplayerPlayer.player.getElement().addEventListener("ended", function() {
+      console.log("Your code when media ends playing");
+    });
   },
 
   actions: {
