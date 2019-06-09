@@ -84,9 +84,12 @@ https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8
               <!-- <openplayerPlayerTime @duration={{ openplayerPlayer.nowPlaying.duration }} class="float-right" /> -->
               {{timeLeft}} Started {{openplayerPlayer.liveProgrammeTimeLeft}} ago
             {{else}}
-              <progress id="progress" value="0" min="0">
-                <span id="progress-bar"></span>
-              </progress>
+              <div class="openplayer_progress">
+                <input type="range" id="progress_range" class="e-range">
+                <progress id="progress" value="0" min="0">
+                  <span id="progress-bar"></span>
+                </progress>
+              </div>
               <!--  <openplayerPlayerTime @duration={{openplayerPlayer.duration}} class="float-right" /> -->
             {{/if}}
           </div>
