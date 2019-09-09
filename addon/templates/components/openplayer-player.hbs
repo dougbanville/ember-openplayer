@@ -1,12 +1,7 @@
-<h1>Hello</h1>
-<h2>CurrentTime: {{ openplayerPlayer.currentTime}}</h2>
 <audio id="openplayer-player" class="op-player  op-player__media" controls playsinline>
-  <source
-    src="https://cdn.rasset.ie/manifest/audio/2019/0404/20190404_rteradio1-bitesize-theryantub_c21535005_21535006_261_/manifest.m3u8">
+  <source src={{ src }}>
 </audio>
-https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8
 
-<button {{action "pause"}}>Pause</button>
 
 <button {{action "changeSource" "https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8"}}>Play Live</button>
 
@@ -29,6 +24,9 @@ https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8
     </div>
   </div>
 {{/if}}
+
+<hr>
+
 <div class="grid-container rte-radioplayer">
   <audio-player aria-label="Audio Player" id="ember89" class="ember-view">
     <div class="rte-radioplayer">
@@ -36,7 +34,7 @@ https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8
         <div class="small-3 medium-2 cell">
           {{#if openplayerPlayer.isPlaying}}
             <button tabindex="1" id="pause" {{action "pause"}}
-              class="button transparent playButton {{ openplayerPlayer.nowPlaying.stationClass}}" label="Pause">
+              class="button transparent playButton {{ openplayerPlayer.nowPlaying.stationClass }}" label="Pause">
               <i class="icon-RP-Webfont_Pause"></i>
             </button>
           {{else}}
@@ -84,7 +82,7 @@ https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8
               <!-- <openplayerPlayerTime @duration={{ openplayerPlayer.nowPlaying.duration }} class="float-right" /> -->
               {{timeLeft}} Started {{openplayerPlayer.liveProgrammeTimeLeft}} ago
             {{else}}
-              <div class="openplayer_progress">
+              <div class="openplayer_progress {{ openplayerPlayer.nowPlaying.stationClass }}-progress">
                 <input type="range" id="progress_range" class="e-range">
                 <progress id="progress" value="0" min="0">
                   <span id="progress-bar"></span>

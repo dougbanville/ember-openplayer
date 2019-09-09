@@ -1,6 +1,9 @@
 $track-w: 12.5em;
 $track-h: 0.25em;
-$thumb-d: 1.5em;
+$thumb-d: 5.5em;
+progress[value]::-webkit-progress-value {
+  background-color: red;
+}
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
@@ -81,7 +84,6 @@ input[type="range"]:focus::-ms-fill-upper {
   background: transparent;
 }
 
-/*
 @mixin track() {
   box-sizing: border-box;
   border: none;
@@ -138,13 +140,13 @@ input[type="range"]:focus::-ms-fill-upper {
     display: none;
   }
 }
-*/
+
 .openplayer_progress {
   position: relative;
   -webkit-box-flex: 2;
   -ms-flex-positive: 2;
   flex-grow: 2;
-  height: 5px;
+  height: 50px;
   align-items: center;
 
   input[type="range"] {

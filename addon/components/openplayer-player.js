@@ -13,8 +13,6 @@ export default Component.extend({
 
   didInsertElement() {
     var player = new OpenPlayer("openplayer-player", null, false, {});
-    const range = new RangeTouch(".e-range", {});
-    console.log(range);
     // Don't forget to start the player
     player.init();
 
@@ -24,19 +22,6 @@ export default Component.extend({
     this.progress = document.getElementById("progress");
     this.progressBar = document.getElementById("progress-bar");
     this.progressRange = document.getElementById("progress_range");
-
-    /*
-    this.progress.addEventListener("click", e => {
-      var pos = (e.pageX - this.progress.offsetLeft) / this.progress.offsetWidth;
-      var htmlPlayer = this.openplayerPlayer.player.getElement();
-      htmlPlayer.currentTime = pos * htmlPlayer.duration;
-    });
-    */
-    /*
-    this.progressRange.addEventListener("change", e => {
-      this.htmlPlayer.currentTime = this.progressRange.value;
-    });
-    */
 
     this.progressRange.addEventListener("input", e => {
       if (!this.sliding) {

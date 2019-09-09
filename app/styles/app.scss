@@ -1,3 +1,7 @@
 @import "settings";
 @import "foundation-sites/foundation";
 @include foundation-everything;
+
+.op-player__audio {
+  display: none !important;
+}

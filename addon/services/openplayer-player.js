@@ -3,6 +3,14 @@ import Service from "@ember/service";
 export default Service.extend({
   isPlaying: false,
   isLive: false,
+  nowPlaying: {
+    stationClass: "radio1",
+    title: "RTE Radio One"
+  },
+
+  setProperty(property, value) {
+    this.set(property, value);
+  },
 
   setPlayer(player) {
     this.set("player", player);

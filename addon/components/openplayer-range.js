@@ -19,7 +19,6 @@ export default Component.extend({
 
   didInsertElement() {
     var rangeSlider = document.getElementById("ember-openplayer-range");
-    console.log(this.value);
     noUiSlider.create(rangeSlider, {
       start: [0],
       value: [this.value],
@@ -30,22 +29,6 @@ export default Component.extend({
         min: [parseInt(this.value)],
         max: [parseInt(this.max)]
       }
-    });
-
-    /*document
-      .getElementsByClassName("noUi-connect")[0]
-      .classList.add(this.nowPlayingClass);*/
-
-    rangeSlider.noUiSlider.on("slide", () => {
-      this.set("sliding", true);
-    });
-    rangeSlider.noUiSlider.on("end", values => {
-      //this.openplayerPlayer.player.seek(values);
-      this.set("sliding", false);
-    });
-    rangeSlider.noUiSlider.on("change", values => {
-      //this.openplayerPlayer.player.seek(values);
-      this.set("sliding", false);
     });
   },
 

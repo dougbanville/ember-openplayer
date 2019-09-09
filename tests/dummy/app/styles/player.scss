@@ -1,0 +1,69 @@
+.rte-open-player {
+  background-color: #1a1e20;
+  height: 110px;
+}
+.playButtonColumn {
+  height: 110px;
+  width: 100%;
+  //border: 1px solid white;
+  display: flex;
+  align-items: center;
+  .playButton {
+    padding: 0.85em 0 !important;
+  }
+  .button {
+    margin: 0 0 0 0;
+  }
+}
+.rangeColumn {
+  height: 110px;
+  width: 100%;
+  //border: 1px solid white;
+  display: flex;
+  align-items: center;
+}
+.radio1-progress {
+  progress[value]::-webkit-progress-value {
+    background-color: $radio1Color;
+  }
+}
+.twofm-progress {
+  progress[value]::-webkit-progress-value {
+    background-color: $twofmColor;
+  }
+}
+.lyric-progress {
+  progress[value]::-webkit-progress-value {
+    background-color: $lyricColor;
+  }
+}
+.rnag-progress {
+  progress[value]::-webkit-progress-value {
+    background-color: $rnagColor;
+  }
+}
+.gold-progress {
+  progress[value]::-webkit-progress-value {
+    background-color: $goldColor;
+  }
+}
+.pulse-progress {
+  progress[value]::-webkit-progress-value {
+    background-color: $pulseColor;
+  }
+}
+.twoxm-progress {
+  progress[value]::-webkit-progress-value {
+    background-color: $twoxmColor;
+  }
+}
+.junior-progress {
+  progress[value]::-webkit-progress-value {
+    background-color: $juniorColor;
+  }
+}
+.radio1extra-progress {
+  progress[value]::-webkit-progress-value {
+    background-color: $radio1extraColor;
+  }
+}

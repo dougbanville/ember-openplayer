@@ -3,6 +3,8 @@ import fetchJsonp from "fetch-jsonp";
 import { inject as service } from "@ember/service";
 
 export default Route.extend({
+  openplayerPlayer: service(),
+
   model() {
     let url = `https://feeds.rasset.ie/rteavgen/chart/?&type=radio&format=jsonp`;
 
@@ -19,5 +21,9 @@ export default Route.extend({
       .catch(function(ex) {
         console.log("parsing failed", ex);
       });
+  },
+
+  afterModel() {
+    //this.openplayerPlayer.setProperty("isLive", true);
   }
 });

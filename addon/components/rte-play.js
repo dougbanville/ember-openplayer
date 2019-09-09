@@ -10,14 +10,11 @@ export default Component.extend({
   ajax: service(),
 
   playSync: task(function*() {
-    let url = `https://feeds.rasset.ie/rteavgen/getplaylist/?format=jsonp&id=${
-      this.audioId
-    }&callback=html5player`;
+    let url = `https://feeds.rasset.ie/rteavgen/getplaylist/?format=jsonp&id=${this.audioId}&callback=html5player`;
     let result = yield fetchJsonp(url, {
       jsonpCallbackFunction: "html5player"
     });
     this.set("result", result.json());
-    console.log(result.json());
   }),
 
   actions: {
@@ -43,6 +40,9 @@ export default Component.extend({
       audio.play();
     },
     play(model) {
+      if (this.audioId > 100) {
+        this.openplayerPlayer.setProperty("isLive", false);
+      }
       this.playSync.perform();
       let sources = ["https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8"];
       let source = 0;
@@ -57,17 +57,14 @@ export default Component.extend({
         if (this.isInPlayer) {
           this.emberFlowplayer.player.toggle();
         } else {
-          let url = `https://feeds.rasset.ie/rteavgen/getplaylist/?id=${
-            this.audioId
-          }&callback=html5player&format=jsonp`;
+          let url = `https://feeds.rasset.ie/rteavgen/getplaylist/?id=${this.audioId}&callback=html5player&format=jsonp`;
           this.ajax
             .request(url, {
               dataType: "jsonp"
             })
             .then(json => {
               let hlsUrl =
-                json.shows[0]["media:group"][0].hls_server +
-                json.shows[0]["media:group"][0].hls_url;
+                json.shows[0]["media:group"][0].hls_server + json.shows[0]["media:group"][0].hls_url;
               this.set("hlsUrl", hlsUrl);
 
               this.openplayerPlayer.player.src = this.hlsUrl;
@@ -81,11 +78,9 @@ export default Component.extend({
       }
     },
     playLive(model) {
-      let url = `https://feeds.rasset.ie/livelistings/playlist/?source=rte.ie&platform=webradio&channelid=${
-        this.audioId
-      }`;
+      let url = `https://feeds.rasset.ie/livelistings/playlist/?source=rte.ie&platform=webradio&channelid=${this.audioId}`;
       fetchJsonp(url, {
-        jsonpCallbackFunction: "html5player"
+        jsonp: "html5player"
       })
         .then(response => {
           return response.json();

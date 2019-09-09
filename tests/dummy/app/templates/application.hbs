@@ -1,9 +1,11 @@
-<h2 id="title">Welcome to Ember</h2>
-<OpenplayerPlayer />
+<OpenplayerPlayer @src="https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8">
+  now playing
+</OpenplayerPlayer>
 <hr>
 <RtePlay @model={{m}} @audioId="https://cdn.rasset.ie/hls-radio/ieradio1/playlist.m3u8">Play Live</RtePlay>
 
 <hr>
+<RtePlay @model={{m}} @audioId=9>Play Live</RtePlay>
 <ul>
   {{#each model as |m| }}
     <li>{{m.title}} {{m.itemid}}
