@@ -1,53 +1,42 @@
 import Component from "@ember/component";
 import layout from "../templates/components/openplayer-range";
-import { inject as service } from "@ember/service";
-import { computed } from "@ember/object";
-import noUiSlider from "nouislider";
+import RangeTouch from "rangetouch";
 
 export default Component.extend({
   layout,
+  duration: 0,
 
-  tagName: "div",
+  didReceiveAttrs() {
+    console.log(this.currentTime);
+    let percentage = Math.floor((this.currentTime / this.duration) * 100);
+    this.set("percentage", percentage);
 
-  elementId: "ember-openplayer-range",
-
-  openplayerPlayer: service(),
-
-  nowPlayingClass: computed("openplayerPlayer.nowPlaying.[]", function() {
-    //return this.openplayerPlayer.nowPlaying.stationClass;
-  }),
-
-  didInsertElement() {
-    var rangeSlider = document.getElementById("ember-openplayer-range");
-    noUiSlider.create(rangeSlider, {
-      start: [0],
-      value: [this.value],
-      connect: [true, false],
-      behaviour: "tap-drag",
-      keyboardSupport: false,
-      range: {
-        min: [parseInt(this.value)],
-        max: [parseInt(this.max)]
-      }
-    });
+    if (!isNaN(this.duration)) {
+      this.set("max", this.duration);
+    } else {
+      this.set("max", 100);
+    }
   },
 
-  didUpdateAttrs() {
-    var rangeSlider = document.getElementById("ember-openplayer-range");
-    rangeSlider.noUiSlider.set(this.openplayerPlayer.currentTime);
-    rangeSlider.noUiSlider.set("range.max", "100");
+  didInsertElement() {
+    const range = new RangeTouch('input[type="range"]', {});
+    console.log("range has arrived");
+  },
+
+  didRender() {
+    this.set("value", `${this.percentage}%`);
   },
 
   actions: {
-    sliderEvent(event) {
-      if (!this.openplayerPlayer.sliding) {
-        this.openplayerPlayer.setSliderState(true);
-      }
-      this.set("value", event.target.value);
+    skip(e) {
+      let progress = document.getElementsByTagName("progress")[0];
+      let newTime = (e.pageX - progress.offsetLeft) / progress.offsetWidth;
+      newTime = newTime * this.duration;
+      //send the time back to parent component
+      this.setTime(newTime);
     },
-    select(event) {
-      //this.openplayerPlayer.player.seek(event.target.value);
-      this.openplayerPlayer.setSliderState(false);
+    setPosition(event) {
+      this.setTime(event.srcElement.value);
     }
   }
 });

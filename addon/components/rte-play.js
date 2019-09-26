@@ -40,6 +40,7 @@ export default Component.extend({
       audio.play();
     },
     play(model) {
+      this.openplayerPlayer.setProperty("isReady", false);
       if (this.audioId > 100) {
         this.openplayerPlayer.setProperty("isLive", false);
       }

@@ -1,1 +1,4 @@
-{{yield}}
+<div class="progress_container {{ openplayerPlayer.nowPlaying.stationClass }}-progress">
+    <input type="range" value={{ currentTime }} max={{ max}} step="0.1" {{on "input" (action "setPosition")}}>
+    <progress style="position: absolute;" value={{ currentTime }} max={{ max}}>{{ value }}</progress>
+</div>

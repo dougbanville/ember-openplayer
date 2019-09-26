@@ -77,18 +77,15 @@
 
 
           <div class="duration_information">
-            <!-- <openplayerPlayerTime @duration={{openplayerPlayer.currentTime}} /> -->
+
             {{#if openplayerPlayer.isLive}}
-              <!-- <openplayerPlayerTime @duration={{ openplayerPlayer.nowPlaying.duration }} class="float-right" /> -->
               {{timeLeft}} Started {{openplayerPlayer.liveProgrammeTimeLeft}} ago
             {{else}}
-              <div class="openplayer_progress {{ openplayerPlayer.nowPlaying.stationClass }}-progress">
-                <input type="range" id="progress_range" class="e-range">
-                <progress id="progress" value="0" min="0">
-                  <span id="progress-bar"></span>
-                </progress>
-              </div>
-              <!--  <openplayerPlayerTime @duration={{openplayerPlayer.duration}} class="float-right" /> -->
+              NOT LIVE
+              <OpenplayerRange @currentTime={{openplayerPlayer.currentTime}} @duration={{ openplayerPlayer.duration }}
+                @setTime={{action "setTime" }} />
+
+
             {{/if}}
           </div>
 
