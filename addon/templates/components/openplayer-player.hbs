@@ -81,7 +81,6 @@
             {{#if openplayerPlayer.isLive}}
               {{timeLeft}} Started {{openplayerPlayer.liveProgrammeTimeLeft}} ago
             {{else}}
-              NOT LIVE
               <OpenplayerRange @currentTime={{openplayerPlayer.currentTime}} @duration={{ openplayerPlayer.duration }}
                 @setTime={{action "setTime" }} />
 

@@ -7,7 +7,6 @@ export default Component.extend({
   duration: 0,
 
   didReceiveAttrs() {
-    console.log(this.currentTime);
     let percentage = Math.floor((this.currentTime / this.duration) * 100);
     this.set("percentage", percentage);
 
@@ -20,7 +19,6 @@ export default Component.extend({
 
   didInsertElement() {
     const range = new RangeTouch('input[type="range"]', {});
-    console.log("range has arrived");
   },
 
   didRender() {
